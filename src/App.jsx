@@ -13,12 +13,12 @@ export default function App() {
     <>
     <Navbar />
     <ServiceRequestCard />
+    <WhyChooseUs />
     <ServiceGrid />
     <ServicePackages />
     <RSAPackages />
     <LabourPriceList />
     <JoinUsBanner />
-    <WhyChooseUs />
     <Footer />
     </>
   );
