@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import bike1 from '../assets/bike_fix.jpg';
-const images = [bike1,bike1,bike1];
+import bike2 from '../assets/bike_fix_1.jpg';
+import bike3 from '../assets/bike_fix_2.jpg';
+
+const images = [bike1,bike2,bike3];
 
 
 export default function ServiceRequestCard() {
   const [formData, setFormData] = useState({
     name: '',
     mobile: '',
-    service: 'Bike Repair',
     address: '',
-    pincode: '',
-    city: '',
     date: '',
     time: '',
   });
@@ -28,11 +28,42 @@ export default function ServiceRequestCard() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Submitted:', formData);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const date = new Date(formData.date);
+
+  const form = new FormData();
+  form.append('entry.588181732', formData.name);             // Name
+  form.append('entry.618549867', formData.mobile);           // Mobile
+  form.append('entry.41781572', formData.address);           // Address
+  form.append('entry.797320591', formData.time);           // time
+  
+  form.append('entry.654029894_year', date.getFullYear());   // Year
+  form.append('entry.654029894_month', date.getMonth() + 1); // Month (0-indexed)
+  form.append('entry.654029894_day', date.getDate());        // Day
+  try {
+    await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe20TTJ0_DxJRIwBOozTLuqRcvWcOhBrAb7IHIShLgLOepMTg/formResponse', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: form,
+    });
+
     alert('📞 We will call you shortly!');
-  };
+    setFormData({
+      name: '',
+      mobile: '',
+      address: '',
+      date: '',
+      time: '',
+    });
+  } catch (err) {
+    console.error('❌ Form submit failed:', err);
+    alert('Something went wrong!');
+  }
+};
+
+
 
   return (
     <section className="mt-10 py-10 px-4 bg-slate-100">
@@ -83,15 +114,6 @@ export default function ServiceRequestCard() {
                 className="bg-gray-100 text-gray-900 px-4 py-2 rounded border border-gray-300"
               />
             </div>
-
-            <input
-              type="text"
-              name="service"
-              value="Bike Repair"
-              disabled
-              className="bg-yellow-100 text-yellow-700 font-semibold px-4 py-2 rounded border border-yellow-300"
-            />
-
             <textarea
               name="address"
               placeholder="Enter street address and locality"
@@ -102,15 +124,15 @@ export default function ServiceRequestCard() {
             ></textarea>
 
             <div className="grid sm:grid-cols-3 gap-4">
-              <input
+              {/* <input
                 type="text"
                 name="pincode"
                 placeholder="411011"
                 value={formData.pincode}
                 onChange={handleChange}
                 className="bg-gray-100 text-gray-900 px-4 py-2 rounded border border-gray-300"
-              />
-              <select
+              /> */}
+              {/* <select
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
@@ -120,14 +142,14 @@ export default function ServiceRequestCard() {
                 <option>Area 1</option>
                 <option>Area 2</option>
                 <option>Area 3</option>
-              </select>
-              <button
+              </select> */}
+              {/* <button
                 type="button"
                 className="bg-yellow-500 text-black font-bold px-4 py-2 rounded hover:bg-yellow-400 transition"
                 onClick={() => alert('📍 Location detection coming soon!')}
               >
                 Detect Pincode
-              </button>
+              </button> */}
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">

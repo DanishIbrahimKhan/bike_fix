@@ -27,9 +27,9 @@ const rsaPackages = [
 
 export default function RSAPackages() {
   return (
-    <section className="bg-gray-950 text-white py-12 px-4">
+    <section className="bg-gray-100 text-white py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-yellow-400 mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-yellow-500 mb-10">
           Roadside Assistance (RSA) Packages
         </h2>
 
@@ -37,18 +37,18 @@ export default function RSAPackages() {
           {rsaPackages.map((pkg, index) => (
             <div
               key={index}
-              className="bg-gray-900 border border-yellow-500 rounded-lg shadow-lg p-6 flex flex-col justify-between hover:scale-[1.02] transition"
+              className="bg-white text-gray-800 border border-yellow-400 rounded-xl shadow-md p-6 flex flex-col justify-between hover:shadow-lg transition"
             >
               <div>
-                <h3 className="text-xl font-bold text-yellow-400 mb-2">{pkg.title}</h3>
-                <p className="text-2xl font-semibold text-white mb-2">{pkg.price}</p>
-                <p className="text-sm text-gray-300 mb-2">{pkg.visits}</p>
-                {pkg.features.map((feature, i) => (
-                  <p key={i} className="text-sm text-gray-300">
-                    {feature}
-                  </p>
-                ))}
-                <button className="text-yellow-400 underline hover:text-yellow-300 text-sm mt-3">
+                <h3 className="text-lg font-bold text-yellow-500 mb-2">{pkg.title}</h3>
+                <p className="text-2xl font-extrabold text-black mb-1">{pkg.price}</p>
+                <p className="text-sm text-gray-600 mb-3">{pkg.visits}</p>
+                <ul className="space-y-1 text-sm text-gray-700">
+                  {pkg.features.map((feature, i) => (
+                    <li key={i}>• {feature}</li>
+                  ))}
+                </ul>
+                <button className="text-yellow-500 underline hover:text-yellow-400 text-sm mt-4">
                   See checklist
                 </button>
               </div>

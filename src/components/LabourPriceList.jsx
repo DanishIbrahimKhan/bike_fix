@@ -47,40 +47,40 @@ const priceData = [
 
 export default function LabourPriceList() {
   return (
-    <section className="bg-gray-950 text-white py-12 px-4">
+    <section className="bg-slate-100 text-gray-800 py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-yellow-400 text-center mb-8">
-          Bike Service Labour Price List – Nagpur
+        <h2 className="text-3xl font-bold text-yellow-500 text-center mb-8">
+          Bike Service Labour Price List
         </h2>
 
-        <p className="text-gray-300 text-center mb-10 max-w-3xl mx-auto text-sm md:text-base">
+        <p className="text-center mb-10 max-w-3xl mx-auto text-sm md:text-base text-gray-600">
           Wondering how much does it cost to service a bike? Bike repair or motorcycle service cost may depend
-          on the type of service you opt for. These are estimated labour costs in Nagpur. Final pricing will be
+          on the type of service you opt for. These are estimated labour costs. Final pricing will be
           provided by the assigned mechanic. Spare parts are extra.
         </p>
 
         {priceData.map((section, i) => (
           <div
             key={i}
-            className="mb-12 bg-gray-900 border border-yellow-600 rounded-lg shadow-md"
+            className="mb-12 bg-white border border-yellow-500 rounded-lg shadow-md"
           >
-            <div className="px-6 py-4 border-b border-yellow-600 flex items-center justify-between">
-              <h3 className="text-xl font-semibold text-yellow-400">{section.category}</h3>
-              <span className="text-sm bg-yellow-500 text-black px-3 py-1 rounded">
+            <div className="px-6 py-4 border-b border-yellow-500 flex items-center justify-between">
+              <h3 className="text-xl font-semibold text-yellow-600">{section.category}</h3>
+              <span className="text-sm bg-yellow-500 text-black px-3 py-1 rounded font-semibold">
                 {section.priceRange}
               </span>
             </div>
 
-            <table className="w-full text-left text-sm text-gray-300">
+            <table className="w-full text-left text-sm text-gray-700">
               <thead>
-                <tr className="border-b border-yellow-700">
+                <tr className="border-b border-yellow-400 bg-yellow-100">
                   <th className="px-6 py-3">Service Type</th>
                   <th className="px-6 py-3">Price</th>
                 </tr>
               </thead>
               <tbody>
                 {section.services.map((item, idx) => (
-                  <tr key={idx} className="border-t border-gray-800 hover:bg-gray-800">
+                  <tr key={idx} className="border-t border-gray-200 hover:bg-yellow-50">
                     <td className="px-6 py-3">{item.name}</td>
                     <td className="px-6 py-3">{item.price}</td>
                   </tr>
@@ -90,7 +90,7 @@ export default function LabourPriceList() {
           </div>
         ))}
 
-        <div className="text-sm text-gray-400 mt-8 space-y-2 max-w-3xl mx-auto">
+        <div className="text-sm text-gray-600 mt-8 space-y-2 max-w-3xl mx-auto">
           <p>* Price of the Engine Oil may vary by location and brand.</p>
           <p>* ₹149 visiting charge applies even if services are not availed.</p>
           <p>* Charges above are for labour only. Parts cost extra.</p>
