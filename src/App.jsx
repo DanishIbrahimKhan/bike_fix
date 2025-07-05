@@ -12,12 +12,20 @@ export default function App() {
   return (
     <>
     <Navbar />
+    <section id="contact">
     <ServiceRequestCard />
+      </section>
+    <section id="about">
     <WhyChooseUs />
+    </section>
+    <section id="services">
     <ServiceGrid />
+    </section>
     <ServicePackages />
     <RSAPackages />
+    <section id="pricing">
     <LabourPriceList />
+    </section>
     <JoinUsBanner />
     <Footer />
     </>
