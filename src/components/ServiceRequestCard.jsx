@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import bike1 from '../assets/bike_fix.jpg';
 import bike2 from '../assets/bike_fix_1.jpg';
 import bike3 from '../assets/bike_fix_2.jpg';
 
-const images = [bike1,bike2,bike3];
-
+const images = [bike1, bike2, bike3];
 
 export default function ServiceRequestCard() {
   const [formData, setFormData] = useState({
@@ -29,41 +29,72 @@ export default function ServiceRequestCard() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const date = new Date(formData.date);
+    const { name, mobile, address, date, time } = formData;
 
-  const form = new FormData();
-  form.append('entry.588181732', formData.name);             // Name
-  form.append('entry.618549867', formData.mobile);           // Mobile
-  form.append('entry.41781572', formData.address);           // Address
-  form.append('entry.797320591', formData.time);           // time
-  
-  form.append('entry.654029894_year', date.getFullYear());   // Year
-  form.append('entry.654029894_month', date.getMonth() + 1); // Month (0-indexed)
-  form.append('entry.654029894_day', date.getDate());        // Day
-  try {
-    await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe20TTJ0_DxJRIwBOozTLuqRcvWcOhBrAb7IHIShLgLOepMTg/formResponse', {
-      method: 'POST',
-      mode: 'no-cors',
-      body: form,
-    });
+    // Validation
+    if (!name.trim() || !mobile.trim() || !address.trim() || !date || !time) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Incomplete Form',
+        text: 'Please fill in all fields before submitting.',
+      });
+      return;
+    }
 
-    alert('📞 We will call you shortly!');
-    setFormData({
-      name: '',
-      mobile: '',
-      address: '',
-      date: '',
-      time: '',
-    });
-  } catch (err) {
-    console.error('❌ Form submit failed:', err);
-    alert('Something went wrong!');
-  }
-};
+    if (!/^\d{10}$/.test(mobile)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Mobile Number',
+        text: 'Please enter a valid 10-digit mobile number.',
+      });
+      return;
+    }
 
+    try {
+      const selectedDate = new Date(date);
+      const form = new FormData();
 
+      form.append('entry.588181732', name);
+      form.append('entry.618549867', mobile);
+      form.append('entry.41781572', address);
+      form.append('entry.797320591', time);
+      form.append('entry.654029894_year', selectedDate.getFullYear());
+      form.append('entry.654029894_month', selectedDate.getMonth() + 1);
+      form.append('entry.654029894_day', selectedDate.getDate());
+
+      await fetch(
+        'https://docs.google.com/forms/d/e/1FAIpQLSe20TTJ0_DxJRIwBOozTLuqRcvWcOhBrAb7IHIShLgLOepMTg/formResponse',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          body: form,
+        }
+      );
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Request Submitted!',
+        text: '📞 We will call you shortly.',
+      });
+
+      setFormData({
+        name: '',
+        mobile: '',
+        address: '',
+        date: '',
+        time: '',
+      });
+    } catch (err) {
+      console.error('❌ Form submit failed:', err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Submission Failed',
+        text: 'Something went wrong. Please try again later.',
+      });
+    }
+  };
 
   return (
     <section className="mt-10 py-10 px-4 bg-slate-100">
@@ -114,6 +145,7 @@ export default function ServiceRequestCard() {
                 className="bg-gray-100 text-gray-900 px-4 py-2 rounded border border-gray-300"
               />
             </div>
+
             <textarea
               name="address"
               placeholder="Enter street address and locality"
@@ -122,35 +154,6 @@ export default function ServiceRequestCard() {
               rows="2"
               className="bg-gray-100 text-gray-900 px-4 py-2 rounded border border-gray-300"
             ></textarea>
-
-            <div className="grid sm:grid-cols-3 gap-4">
-              {/* <input
-                type="text"
-                name="pincode"
-                placeholder="411011"
-                value={formData.pincode}
-                onChange={handleChange}
-                className="bg-gray-100 text-gray-900 px-4 py-2 rounded border border-gray-300"
-              /> */}
-              {/* <select
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-                className="bg-gray-100 text-gray-900 px-4 py-2 rounded border border-gray-300"
-              >
-                <option value="">Select Area</option>
-                <option>Area 1</option>
-                <option>Area 2</option>
-                <option>Area 3</option>
-              </select> */}
-              {/* <button
-                type="button"
-                className="bg-yellow-500 text-black font-bold px-4 py-2 rounded hover:bg-yellow-400 transition"
-                onClick={() => alert('📍 Location detection coming soon!')}
-              >
-                Detect Pincode
-              </button> */}
-            </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <input
