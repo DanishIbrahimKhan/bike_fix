@@ -1,3 +1,4 @@
+import ChhindwaraMark from "./components/ChhindwaraMark";
 import Footer from "./components/Footer";
 import JoinUsBanner from "./components/JoinUsBanner";
 import LabourPriceList from "./components/LabourPriceList";
@@ -17,6 +18,7 @@ export default function App() {
       </section>
     <section id="about">
     <WhyChooseUs />
+    <ChhindwaraMark />
     </section>
     <section id="services">
     <ServiceGrid />

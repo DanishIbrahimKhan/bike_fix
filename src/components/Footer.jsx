@@ -71,7 +71,7 @@ export default function Footer() {
 
       {/* Bottom Strip */}
       <div className="text-center text-xs text-gray-500 mt-10 border-t border-gray-200 pt-6">
-        &copy; {new Date().getFullYear()} Bike Fix. All rights reserved.
+        &copy; {new Date().getFullYear()} Chhindwara Bike Services. All rights reserved.
       </div>
     </footer>
   );
