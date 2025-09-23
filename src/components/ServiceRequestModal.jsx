@@ -39,16 +39,26 @@ export default function ServiceRequestModal({ isOpen, onClose }) {
     try {
       const selectedDate = new Date(date);
       const form = new FormData();
-      form.append('entry.588181732', name);
-      form.append('entry.618549867', mobile);
-      form.append('entry.41781572', address);
-      form.append('entry.797320591', time);
-      form.append('entry.654029894_year', selectedDate.getFullYear());
-      form.append('entry.654029894_month', selectedDate.getMonth() + 1);
-      form.append('entry.654029894_day', selectedDate.getDate());
+      // form.append('entry.588181732', name);
+      // form.append('entry.618549867', mobile);
+      // form.append('entry.41781572', address);
+      // form.append('entry.797320591', time);
+      // form.append('entry.654029894_year', selectedDate.getFullYear());
+      // form.append('entry.654029894_month', selectedDate.getMonth() + 1);
+      // form.append('entry.654029894_day', selectedDate.getDate());
+      form.append('entry.1708715124', name);
+      form.append('entry.1640112910', mobile);
+      form.append('entry.267682140', address);
+      form.append('entry.247346093', time);
+      form.append('entry.1572358225_year', selectedDate.getFullYear());
+      form.append('entry.1572358225_month', selectedDate.getMonth() + 1);
+      form.append('entry.1572358225_day', selectedDate.getDate());
 
+      
       await fetch(
-        'https://docs.google.com/forms/d/e/1FAIpQLSe20TTJ0_DxJRIwBOozTLuqRcvWcOhBrAb7IHIShLgLOepMTg/formResponse',
+        // 'https://docs.google.com/forms/d/e/1FAIpQLSe20TTJ0_DxJRIwBOozTLuqRcvWcOhBrAb7IHIShLgLOepMTg/formResponse',
+        'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfXsWBw6EeWhDsMaWdNAbJXP2bruLaKUiB-hAG2xGjzoKLf8g/formResponse',
+       
         {
           method: 'POST',
           mode: 'no-cors',
