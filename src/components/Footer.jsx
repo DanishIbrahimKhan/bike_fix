@@ -37,16 +37,16 @@ export default function Footer() {
           <ul className="space-y-3 text-sm">
             <li className="flex items-start gap-2">
               <FaMapMarkerAlt className="mt-1 text-yellow-500" />
-              <span>123 Example Street, City</span>
+              <span>In Front Of ALKA Talkies,Beside Maharaja Auto Parts, Chhindwara</span>
             </li>
             <li className="flex items-center gap-2">
               <FaPhoneAlt className="text-yellow-500" />
-              <a href="tel:8888888888" className="hover:text-yellow-500">+91 8888888888</a>
+              <a href="tel:8888888888" className="hover:text-yellow-500">+91 9340383207</a>
             </li>
             <li className="flex items-center gap-2">
               <FaEnvelope className="text-yellow-500" />
               <a href="mailto:test.com" className="hover:text-yellow-500">
-                test.com
+                www.chhindwarabikeservice.com
               </a>
             </li>
           </ul>
