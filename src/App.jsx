@@ -1,3 +1,4 @@
+import ChhindwaraMark from "./components/ChhindwaraMark";
 import Footer from "./components/Footer";
 import JoinUsBanner from "./components/JoinUsBanner";
 import LabourPriceList from "./components/LabourPriceList";
@@ -12,13 +13,22 @@ export default function App() {
   return (
     <>
     <Navbar />
+    <section id="contact">
     <ServiceRequestCard />
+      </section>
+    <section id="about">
+    <WhyChooseUs />
+    <ChhindwaraMark />
+    </section>
+    <section id="services">
     <ServiceGrid />
+    </section>
     <ServicePackages />
     <RSAPackages />
+    <section id="pricing">
     <LabourPriceList />
+    </section>
     <JoinUsBanner />
-    <WhyChooseUs />
     <Footer />
     </>
   );

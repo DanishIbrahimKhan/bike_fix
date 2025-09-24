@@ -1,3 +1,6 @@
+import { useState } from "react";
+import ServiceRequestModal from "./ServiceRequestModal";
+
 const priceData = [
   {
     category: "Bike Service Labour Price List (Up to 180 CC)",
@@ -46,6 +49,7 @@ const priceData = [
 ];
 
 export default function LabourPriceList() {
+ const [modalOpen, setModalOpen] = useState(false);
   return (
     <section className="bg-slate-100 text-gray-800 py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -98,11 +102,13 @@ export default function LabourPriceList() {
         </div>
 
         <div className="text-center mt-8">
-          <button className="bg-yellow-500 text-black font-bold px-6 py-3 rounded hover:bg-yellow-400 transition">
+          <button onClick={() => setModalOpen(true)} className="bg-yellow-500 text-black font-bold px-6 py-3 rounded hover:bg-yellow-400 transition">
             Book Now
           </button>
         </div>
       </div>
+      <ServiceRequestModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+    
     </section>
   );
 }

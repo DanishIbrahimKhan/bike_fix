@@ -1,3 +1,6 @@
+import { useState } from "react";
+import ServiceRequestModal from "./ServiceRequestModal";
+
 const rsaPackages = [
   {
     title: "Two-wheeler RSA - Silver",
@@ -26,8 +29,9 @@ const rsaPackages = [
 ];
 
 export default function RSAPackages() {
+   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <section className="bg-gray-100 text-white py-12 px-4">
+    <section className="bg-gray-100 text-black py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-yellow-500 mb-10">
           Roadside Assistance (RSA) Packages
@@ -53,13 +57,15 @@ export default function RSAPackages() {
                 </button>
               </div>
 
-              <button className="mt-6 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 rounded transition">
+              <button onClick={() => setModalOpen(true)} className="mt-6 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 rounded transition">
                 Check Price
               </button>
             </div>
           ))}
         </div>
       </div>
+    
+      <ServiceRequestModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   );
 }

@@ -4,7 +4,12 @@ import bike1 from '../assets/bike_fix.jpg';
 import bike2 from '../assets/bike_fix_1.jpg';
 import bike3 from '../assets/bike_fix_2.jpg';
 
-const images = [bike1, bike2, bike3];
+const images = [
+  'https://plus.unsplash.com/premium_photo-1664299589660-35f51cb645ca?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1527167747750-749ac47351a7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1623220940666-f4bcc07aaed9?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1650569663281-44a28c984e2a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+];
 
 export default function ServiceRequestCard() {
   const [formData, setFormData] = useState({
@@ -33,7 +38,6 @@ export default function ServiceRequestCard() {
 
     const { name, mobile, address, date, time } = formData;
 
-    // Validation
     if (!name.trim() || !mobile.trim() || !address.trim() || !date || !time) {
       Swal.fire({
         icon: 'warning',
@@ -56,16 +60,21 @@ export default function ServiceRequestCard() {
       const selectedDate = new Date(date);
       const form = new FormData();
 
-      form.append('entry.588181732', name);
-      form.append('entry.618549867', mobile);
-      form.append('entry.41781572', address);
-      form.append('entry.797320591', time);
-      form.append('entry.654029894_year', selectedDate.getFullYear());
-      form.append('entry.654029894_month', selectedDate.getMonth() + 1);
-      form.append('entry.654029894_day', selectedDate.getDate());
+
+      form.append('entry.1708715124', name);
+      form.append('entry.1640112910', mobile);
+      form.append('entry.267682140', address);
+      form.append('entry.247346093', time);
+      form.append('entry.1572358225_year', selectedDate.getFullYear());
+      form.append('entry.1572358225_month', selectedDate.getMonth() + 1);
+      form.append('entry.1572358225_day', selectedDate.getDate());
+
+
       {/*here is google form link */}
+
       await fetch(
-        'https://docs.google.com/forms/d/e/1FAIpQLSe20TTJ0_DxJRIwBOozTLuqRcvWcOhBrAb7IHIShLgLOepMTg/formResponse',
+        //'https://docs.google.com/forms/d/e/1FAIpQLSe20TTJ0_DxJRIwBOozTLuqRcvWcOhBrAb7IHIShLgLOepMTg/formResponse',
+        'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfXsWBw6EeWhDsMaWdNAbJXP2bruLaKUiB-hAG2xGjzoKLf8g/formResponse',
         {
           method: 'POST',
           mode: 'no-cors',
@@ -97,10 +106,10 @@ export default function ServiceRequestCard() {
   };
 
   return (
-    <section className="mt-10 py-10 px-4 bg-slate-100">
+    <section className="mt-16 py-10 px-4 bg-slate-100">
       <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden grid md:grid-cols-2">
-        {/* LEFT: Image Slideshow */}
-        <div className="relative h-96 md:h-auto">
+        {/* LEFT ON DESKTOP, BELOW ON MOBILE */}
+        <div className="relative h-96 md:h-auto order-2 md:order-1">
           <img
             src={images[currentImage]}
             alt="Bike Service"
@@ -118,8 +127,8 @@ export default function ServiceRequestCard() {
           </div>
         </div>
 
-        {/* RIGHT: Form */}
-        <div className="p-8 bg-white">
+        {/* FORM – RIGHT ON DESKTOP, TOP ON MOBILE */}
+        <div className="p-8 bg-white order-1 md:order-2">
           <h2 className="text-2xl font-bold text-yellow-500 mb-6 text-center">
             Bike Repair <span className="text-gray-800">– See Price</span>
           </h2>

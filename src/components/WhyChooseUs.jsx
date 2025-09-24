@@ -45,7 +45,6 @@ export default function WhyChooseUs() {
           <p>
             Unlike nearby local garages, we ensure high-quality support, pricing
             transparency, and a seamless customer experience — all through the
-            Apna Mechanic App.
           </p>
         </div>
       </div>

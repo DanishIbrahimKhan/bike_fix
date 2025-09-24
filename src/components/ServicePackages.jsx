@@ -1,3 +1,6 @@
+import { useState } from "react";
+import ServiceRequestModal from "./ServiceRequestModal";
+
 const packages = [
   {
     title: "At-Home Classic Package",
@@ -30,6 +33,7 @@ const packages = [
 ];
 
 export default function ServicePackages() {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <section className="bg-slate-100 text-gray-900 py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -54,12 +58,13 @@ export default function ServicePackages() {
                 </button>
               </div>
 
-              <button className="mt-6 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 rounded transition">
+              <button onClick={() => setModalOpen(true)} className="mt-6 bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 rounded transition">
                 Check Price
               </button>
             </div>
           ))}
         </div>
+        <ServiceRequestModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
       </div>
     </section>
   );
