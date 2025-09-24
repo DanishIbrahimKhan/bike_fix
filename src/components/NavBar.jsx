@@ -32,7 +32,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <img src="/logo.png" alt="Logo" className="w-10 h-10" />
+          <img src="/Chhindwara-logo.png" alt="Logo" className="w-10 h-10" />
           <span className="text-2xl font-extrabold text-yellow-500 uppercase tracking-wide">BikeFix</span>
         </div>
 

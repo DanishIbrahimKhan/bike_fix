@@ -63,7 +63,7 @@ export default function ServiceRequestCard() {
       form.append('entry.654029894_year', selectedDate.getFullYear());
       form.append('entry.654029894_month', selectedDate.getMonth() + 1);
       form.append('entry.654029894_day', selectedDate.getDate());
-
+      {/*here is google form link */}
       await fetch(
         'https://docs.google.com/forms/d/e/1FAIpQLSe20TTJ0_DxJRIwBOozTLuqRcvWcOhBrAb7IHIShLgLOepMTg/formResponse',
         {
