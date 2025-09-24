@@ -34,6 +34,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative">
         {/* Logo */}
         <div className="flex items-center space-x-2">
+
           <img src={bikeServiceLogo} alt="Logo" className="w-auto h-14" />
 
           <div className="flex flex-col items-center">
@@ -45,6 +46,8 @@ export default function Navbar() {
             </div>
           </div>
 
+
+         
         </div>
 
         {/* Search & City Selector */}

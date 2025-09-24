@@ -60,6 +60,7 @@ export default function ServiceRequestCard() {
       const selectedDate = new Date(date);
       const form = new FormData();
 
+
       form.append('entry.1708715124', name);
       form.append('entry.1640112910', mobile);
       form.append('entry.267682140', address);
@@ -67,6 +68,9 @@ export default function ServiceRequestCard() {
       form.append('entry.1572358225_year', selectedDate.getFullYear());
       form.append('entry.1572358225_month', selectedDate.getMonth() + 1);
       form.append('entry.1572358225_day', selectedDate.getDate());
+
+
+      {/*here is google form link */}
 
       await fetch(
         //'https://docs.google.com/forms/d/e/1FAIpQLSe20TTJ0_DxJRIwBOozTLuqRcvWcOhBrAb7IHIShLgLOepMTg/formResponse',
